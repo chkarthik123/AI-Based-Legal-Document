@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Analysis History</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+</head>
+
+<body>
+
+<!-- HEADER -->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-3 bg-secondary d-none d-lg-block">
+            <a href="/ClientHome" class="navbar-brand w-100 h-100 d-flex align-items-center justify-content-center">
+                <h1 class="m-0 display-4 text-primary text-uppercase">Justice</h1>
+            </a>
+        </div>
+
+        <div class="col-lg-9">
+            <nav class="navbar navbar-expand-lg bg-white navbar-light p-0">
+                <div class="navbar-nav mr-auto">
+                    <a href="/ClientHome" class="nav-item nav-link">Dashboard</a>
+                   <a href="/Upload" class="nav-item nav-link">Upload Document</a>
+                         <a href="/History" class="nav-item nav-link active">History</a>
+                    <a href="/client" class="nav-item nav-link text-danger">Logout</a>
+                </div>
+                <span class="btn btn-outline-primary mr-3 d-none d-lg-block">
+                    {{ session.name }}
+                </span>
+            </nav>
+        </div>
+    </div>
+</div>
+
+<!-- PAGE HEADER -->
+<div class="container-fluid bg-page-header mb-5">
+    <div class="container text-center py-5">
+        <h1 class="display-4 text-white text-uppercase">Analysis History</h1>
+        <p class="text-white">Previously analyzed legal documents</p>
+    </div>
+</div>
+
+<!-- HISTORY TABLE -->
+<div class="container py-5">
+
+    {% if records|length == 0 %}
+        <div class="alert alert-info text-center">
+            No analysis history found.
+        </div>
+    {% else %}
+
+    <div class="table-responsive">
+    <table class="table table-bordered table-hover shadow">
+        <thead class="bg-secondary text-white">
+            <tr>
+                <th>#</th>
+                <th>File Name</th>
+                <th>Summary</th>
+                <th>Key Points</th>
+                <th>Advice</th>
+                <th>Date</th>
+                <th>Actions</th>   <!-- NEW -->
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in records %}
+            <tr>
+                <td>{{ loop.index }}</td>
+
+                <!-- row structure assumption -->
+                <!-- row = (id, filename, summary, key_points, advice, date, ...) -->
+
+                <td><strong>{{ row[1] }}</strong></td>
+                <td>{{ row[2][:150] }}...</td>
+                <td>{{ row[3][:100] }}...</td>
+                <td>{{ row[4] }}</td>
+                <td>{{ row[5] }}</td>
+
+                <td class="text-center">
+                    <!-- Download -->
+                    <a href="/download/{{ row[0] }}" class="btn btn-success btn-sm">
+                        <i class="fa fa-download"></i>
+                    </a>
+
+                    <!-- Delete -->
+                    <a href="/delete_history/{{ row[0] }}"
+                       class="btn btn-danger btn-sm mb-1"
+                       onclick="return confirm('Are you sure you want to delete this record?')">
+                        <i class="fa fa-trash"></i>
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+    {% endif %}
+
+    <div class="text-center mt-4">
+        <a href="/ClientHome" class="btn btn-dark">
+            ⬅ Back to Dashboard
+        </a>
+    </div>
+
+</div>
+
+<!-- FOOTER -->
+<div class="container-fluid bg-secondary text-white text-center py-4 mt-5">
+    <p class="mb-0">
+        © 2026 <strong>AI-Based Legal Document Summarizer & Law Advisor</strong>
+    </p>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Admin Dashboard | AI Legal Advisor</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Roboto:wght@300;500;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+    <!-- CSS -->
+    <link href="{{url_for('static',filename='css/style.css')}}" rel="stylesheet">
+</head>
+
+<body>
+
+<!-- HEADER -->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-3 bg-secondary d-none d-lg-flex align-items-center justify-content-center">
+            <h1 class="text-primary text-uppercase">Admin Panel</h1>
+        </div>
+
+        <div class="col-lg-9">
+            <nav class="navbar navbar-expand-lg bg-white navbar-light p-0">
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <div class="navbar-nav mr-auto py-0">
+                        <a href="/AdminHome" class="nav-item nav-link active">Dashboard</a>
+                        <a href="/UploadAction" class="nav-item nav-link">Upload Dataset</a>
+                        <a href="/train_model" class="nav-item nav-link">Train Model</a>
+                        <a href="/graph" class="nav-item nav-link">Performance</a>
+                        <a href="/admin" class="nav-item nav-link text-danger">Logout</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+</div>
+<!-- HEADER END -->
+
+<!-- PAGE HEADER -->
+<div class="container-fluid bg-page-header mb-5">
+    <div class="container text-center py-5">
+        <h1 class="display-4 text-white">Admin Dashboard</h1>
+        <p class="text-white mt-3">
+            Manage datasets, train AI models, and monitor performance
+        </p>
+    </div>
+</div>
+
+<!-- DASHBOARD CARDS -->
+<div class="container py-5">
+    <div class="row text-center">
+
+        <!-- Upload Dataset -->
+        <div class="col-md-4 mb-4">
+            <div class="bg-light rounded shadow p-4 h-100">
+                <i class="fa fa-upload fa-3x text-primary mb-3"></i>
+                <h4>Upload Dataset</h4>
+                <p class="text-muted">
+                    Upload legal document text files used for model training.
+                </p>
+                <a href="/UploadAction" class="btn btn-primary">Go</a>
+            </div>
+        </div>
+
+        <!-- Train Model -->
+        <div class="col-md-4 mb-4">
+            <div class="bg-light rounded shadow p-4 h-100">
+                <i class="fa fa-cogs fa-3x text-success mb-3"></i>
+                <h4>Train AI Model</h4>
+                <p class="text-muted">
+                    Train the machine learning model using uploaded datasets.
+                </p>
+                <a href="/train_model" class="btn btn-success">Train</a>
+            </div>
+        </div>
+
+        <!-- Performance -->
+        <div class="col-md-4 mb-4">
+            <div class="bg-light rounded shadow p-4 h-100">
+                <i class="fa fa-chart-line fa-3x text-warning mb-3"></i>
+                <h4>Performance Graph</h4>
+                <p class="text-muted">
+                    View accuracy and performance evaluation graphs.
+                </p>
+                <a href="/graph" class="btn btn-warning">View</a>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!-- DASHBOARD CARDS END -->
+
+<!-- FOOTER -->
+<div class="container-fluid bg-secondary text-white text-center py-3">
+    <p class="mb-0">
+        © 2026 AI-Based Legal Document Summarizer & Law Advisor
+    </p>
+</div>
+
+<!-- JS -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

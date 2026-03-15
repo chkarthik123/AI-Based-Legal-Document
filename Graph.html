@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Model Training Results</title>
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+</head>
+<body>
+
+<div class="container mt-5">
+
+    <h2 class="text-center mb-4">📊 Model Performance Analysis Results</h2>
+
+    <hr>
+
+
+    <div class="row" style="margin-top:100px;">
+        <div class="col-md-6 text-center">
+            <h5>Accuracy Comparison</h5>
+            <img src="{{ url_for('static', filename='graphs/accuracy_comparison.png') }}"
+                 class="img-fluid shadow">
+        </div>
+
+        <div class="col-md-6 text-center">
+            <h5>Confusion Matrix</h5>
+            <img src="{{ url_for('static', filename='graphs/confusion_matrix.png') }}"
+                 class="img-fluid shadow">
+        </div>
+    </div>
+
+    <div class="text-center mt-4">
+        <a href="/AdminHome" class="btn btn-dark">⬅ Back to Dashboard</a>
+    </div>
+
+</div>
+
+</body>
+</html>

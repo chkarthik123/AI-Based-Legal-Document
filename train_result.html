@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Model Training Results</title>
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+</head>
+<body>
+
+<div class="container mt-5">
+{% if best_model_name %}
+<div class="alert alert-success text-center">
+    🏆 Best Performing Algorithm:
+    <strong>{{ best_model_name }}</strong><br>
+    Accuracy: <strong>{{ best_acc }}</strong>
+</div>
+{% endif %}
+    <h2 class="text-center mb-4">📊 Model Training Results</h2>
+    {% if msg %}
+    <div class="alert alert-info text-center">
+        {{ msg }}
+    </div>
+    {% endif %}
+    <div class="card p-4 mb-4">
+        <h4>Algorithm Accuracy</h4>
+        <table class="table table-bordered mt-3">
+            <tr>
+                <th>Algorithm</th>
+                <th>Accuracy</th>
+            </tr>
+            {%if results%}
+            {% for model, acc in results.items() %}
+            <tr>
+                <td>{{ model }}</td>
+                <td>{{ acc }}</td>
+            </tr>
+            {% endfor %}
+            {%endif%}
+        </table>
+
+        <h5 class="text-success">
+            Best Model Accuracy: {{ best_acc }}
+        </h5>
+    </div>
+
+<!--    <div class="row">-->
+<!--        <div class="col-md-6 text-center">-->
+<!--            <h5>Accuracy Comparison</h5>-->
+<!--            <img src="{{ url_for('static', filename='graphs/accuracy_comparison.png') }}"-->
+<!--                 class="img-fluid shadow">-->
+<!--        </div>-->
+
+<!--        <div class="col-md-6 text-center">-->
+<!--            <h5>Confusion Matrix</h5>-->
+<!--            <img src="{{ url_for('static', filename='graphs/confusion_matrix.png') }}"-->
+<!--                 class="img-fluid shadow">-->
+<!--        </div>-->
+<!--    </div>-->
+
+    <div class="text-center mt-4">
+        <a href="/AdminHome" class="btn btn-dark">⬅ Back to Dashboard</a>
+    </div>
+
+</div>
+
+</body>
+</html>

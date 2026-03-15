@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Client Login | Legal Document Advisor</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Roboto:wght@300;500;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+    <!-- CSS -->
+    <link href="{{url_for('static',filename='css/style.css')}}" rel="stylesheet">
+</head>
+
+<body>
+
+<!-- HEADER -->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-3 bg-secondary d-none d-lg-block">
+            <a href="/" class="navbar-brand w-100 h-100 d-flex align-items-center justify-content-center">
+                <h1 class="m-0 display-4 text-primary text-uppercase">Justice</h1>
+            </a>
+        </div>
+
+        <div class="col-lg-9">
+            <nav class="navbar navbar-expand-lg bg-white navbar-light p-0">
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                    <div class="navbar-nav mr-auto">
+                        <a href="/" class="nav-item nav-link">Home</a>
+                        <a href="/admin" class="nav-item nav-link">Admin</a>
+                        <a href="/client" class="nav-item nav-link active">Client</a>
+                        <a href="#about" class="nav-item nav-link">About</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+</div>
+
+<!-- PAGE HEADER -->
+<div class="container-fluid bg-page-header mb-5">
+    <div class="container text-center py-5">
+        <h1 class="display-4 text-white text-uppercase">Client Login</h1>
+        <p class="text-white mt-2">
+            Access AI-Based Legal Document Summarizer & Law Advisor
+        </p>
+    </div>
+</div>
+
+<!-- LOGIN SECTION -->
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-5">
+            <div class="card shadow-lg border-0">
+                <div class="card-body p-5">
+
+                    <h3 class="text-center mb-4">Sign In</h3>
+
+                    {% if msg %}
+                        <div class="alert alert-danger text-center">
+                            {{ msg }}
+                        </div>
+                    {% endif %}
+
+                    <form action="/LoginAction" method="post">
+
+                        <div class="form-group">
+                            <label><i class="fa fa-user text-primary"></i> Username</label>
+                            <input type="text" name="username" class="form-control p-3"
+                                   placeholder="Enter username" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label><i class="fa fa-lock text-primary"></i> Password</label>
+                            <input type="password" name="password" class="form-control p-3"
+                                   placeholder="Enter password" required>
+                        </div>
+
+                        <button class="btn btn-primary btn-block py-3 mt-3">
+                            Login
+                        </button>
+
+                        <p class="text-center mt-4">
+                            Don’t have an account?
+                            <a href="/register" class="font-weight-bold">Register here</a>
+                        </p>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- FOOTER -->
+<div class="container-fluid bg-secondary text-white text-center py-4">
+    <p class="mb-0">
+        © 2026 <strong>AI-Based Legal Document Summarizer & Law Advisor</strong>
+    </p>
+    <small>Developed for Academic & Research Use</small>
+</div>
+
+<!-- JS -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Client Dashboard | Legal Advisor</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Roboto:wght@300;500;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+    <!-- CSS -->
+    <link href="{{url_for('static',filename='css/style.css')}}" rel="stylesheet">
+</head>
+
+<body>
+
+<!-- HEADER -->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-3 bg-secondary d-none d-lg-block">
+            <a href="/ClientHome" class="navbar-brand w-100 h-100 d-flex align-items-center justify-content-center">
+                <h1 class="m-0 display-4 text-primary text-uppercase">Justice</h1>
+            </a>
+        </div>
+
+        <div class="col-lg-9">
+            <nav class="navbar navbar-expand-lg bg-white navbar-light p-0">
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                    <div class="navbar-nav mr-auto">
+                        <a href="/ClientHome" class="nav-item nav-link active">Dashboard</a>
+                        <a href="/Upload" class="nav-item nav-link">Upload Document</a>
+                         <a href="/History" class="nav-item nav-link">History</a>
+                        <a href="/client" class="nav-item nav-link text-danger">Logout</a>
+                    </div>
+
+                    <span class="btn btn-outline-primary mr-3 d-none d-lg-block">
+                        {{ session.name }}
+                    </span>
+                </div>
+            </nav>
+        </div>
+    </div>
+</div>
+
+<!-- PAGE HEADER -->
+<div class="container-fluid bg-page-header mb-5">
+    <div class="container text-center py-5">
+        <h1 class="display-4 text-white text-uppercase">Client Dashboard</h1>
+        <p class="text-white mt-2">
+            Welcome, {{ session.email }}
+        </p>
+    </div>
+</div>
+
+<!-- DASHBOARD CONTENT -->
+<div class="container py-5">
+
+    {% if msg %}
+        <div class="alert alert-info text-center">
+            {{ msg }}
+        </div>
+    {% endif %}
+
+    <div class="text-center mb-5">
+        <h2>What would you like to do?</h2>
+        <p class="text-muted">
+            Use AI to analyze, summarize, and understand legal documents instantly.
+        </p>
+    </div>
+
+    <div class="row">
+
+        <!-- Upload Document -->
+        <div class="col-lg-4 mb-4">
+            <div class="card shadow h-100 text-center p-4">
+                <i class="fa fa-file-upload fa-3x text-primary mb-3"></i>
+                <h5>Upload Legal Document</h5>
+                <p class="text-muted">
+                    Upload your legal text file and let AI analyze it.
+                </p>
+                <a href="/Upload" class="btn btn-primary mt-3">
+                    Upload Now
+                </a>
+            </div>
+        </div>
+
+        <!-- AI Summary -->
+        <div class="col-lg-4 mb-4">
+            <div class="card shadow h-100 text-center p-4">
+                <i class="fa fa-brain fa-3x text-primary mb-3"></i>
+                <h5>AI-Based Summarization</h5>
+                <p class="text-muted">
+                    Get a concise summary of complex legal documents.
+                </p>
+                <span class="badge badge-success p-2 mt-3">
+                    Automatic after upload
+                </span>
+            </div>
+        </div>
+
+        <!-- Legal Insights -->
+        <div class="col-lg-4 mb-4">
+            <div class="card shadow h-100 text-center p-4">
+                <i class="fa fa-gavel fa-3x text-primary mb-3"></i>
+                <h5>Legal Clause Detection</h5>
+                <p class="text-muted">
+                    Identify penalties, termination clauses, and liabilities.
+                </p>
+                <span class="badge badge-info p-2 mt-3">
+                    AI Powered
+                </span>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- FOOTER -->
+<div class="container-fluid bg-secondary text-white text-center py-4">
+    <p class="mb-0">
+        © 2026 <strong>AI-Based Legal Document Summarizer & Law Advisor</strong>
+    </p>
+    <small>Academic Project | Machine Learning & NLP</small>
+</div>
+
+<!-- JS -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

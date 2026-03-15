@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dataset Information</title>
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="container py-5">
+
+    <h1 class="mb-4 text-center">📊 Dataset Overview</h1>
+
+    <!-- STATS CARDS -->
+    <div class="row text-center mb-5">
+
+        <div class="col-md-4">
+            <div class="bg-primary text-white rounded p-4 shadow">
+                <h3>{{ total_files }}</h3>
+                <p>Total Legal Documents</p>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="bg-success text-white rounded p-4 shadow">
+                <h3>{{ full_text_count }}</h3>
+                <p>Full Legal Text Files</p>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="bg-info text-white rounded p-4 shadow">
+                <h3>{{ summary_count }}</h3>
+                <p>Summary Files</p>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- FILE LISTS -->
+    <div class="row">
+
+        <div class="col-md-6">
+            <div class="card shadow">
+                <div class="card-header bg-success text-white">
+                    <i class="fa fa-file-alt"></i> Full Text Files
+                </div>
+                <div class="card-body" style="max-height: 300px; overflow-y: auto;">
+                    <ul class="list-group">
+                        {% for file in full_text_files %}
+                            <li class="list-group-item">{{ file }}</li>
+                        {% else %}
+                            <li class="list-group-item text-muted">No files found</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card shadow">
+                <div class="card-header bg-info text-white">
+                    <i class="fa fa-align-left"></i> Summary Files
+                </div>
+                <div class="card-body" style="max-height: 300px; overflow-y: auto;">
+                    <ul class="list-group">
+                        {% for file in summary_files %}
+                            <li class="list-group-item">{{ file }}</li>
+                        {% else %}
+                            <li class="list-group-item text-muted">No files found</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ACTIONS -->
+    <div class="text-center mt-5">
+        <a href="/train_model" class="btn btn-primary btn-lg mr-3">
+            🚀 Train Model
+        </a>
+        <a href="/AdminHome" class="btn btn-secondary btn-lg">
+            ⬅ Back to Dashboard
+        </a>
+    </div>
+
+</div>
+
+</body>
+</html>

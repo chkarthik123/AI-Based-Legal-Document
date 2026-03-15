@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Upload Legal Document | Client</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Roboto:wght@300;500;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+    <!-- CSS -->
+    <link href="{{url_for('static',filename='css/style.css')}}" rel="stylesheet">
+</head>
+
+<body>
+
+<!-- HEADER -->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-3 bg-secondary d-none d-lg-block">
+            <a href="/ClientHome" class="navbar-brand w-100 h-100 d-flex align-items-center justify-content-center">
+                <h1 class="m-0 display-4 text-primary text-uppercase">Justice</h1>
+            </a>
+        </div>
+
+        <div class="col-lg-9">
+            <nav class="navbar navbar-expand-lg bg-white navbar-light p-0">
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                    <div class="navbar-nav mr-auto">
+                        <a href="/ClientHome" class="nav-item nav-link">Dashboard</a>
+                        <a href="/Upload" class="nav-item nav-link active">Upload Document</a>
+                         <a href="/History" class="nav-item nav-link ">History</a>
+                        <a href="/client" class="nav-item nav-link text-danger">Logout</a>
+                    </div>
+
+                    <span class="btn btn-outline-primary mr-3 d-none d-lg-block">
+                        {{ session.name }}
+                    </span>
+                </div>
+            </nav>
+        </div>
+    </div>
+</div>
+
+<!-- PAGE HEADER -->
+<div class="container-fluid bg-page-header mb-5">
+    <div class="container text-center py-5">
+        <h1 class="display-4 text-white text-uppercase">Upload Legal Document</h1>
+        <p class="text-white mt-2">
+            AI-Based Legal Document Summarization & Clause Detection
+        </p>
+    </div>
+</div>
+
+<!-- UPLOAD SECTION -->
+<div class="container py-5">
+
+    {% if msg %}
+        <div class="alert alert-info text-center">
+            {{ msg }}
+        </div>
+    {% endif %}
+
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+
+            <div class="card shadow p-5">
+                <div class="text-center mb-4">
+                    <i class="fa fa-file-alt fa-3x text-primary mb-3"></i>
+                    <h3>Upload Legal Text File</h3>
+                    <p class="text-muted">
+                        Upload a legal document to automatically generate a summary and identify key clauses
+                        such as penalties, termination, and liabilities.
+                    </p>
+                </div>
+
+               <form id="analyzeForm"
+      action="/TextAction"
+      method="post"
+      enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label class="font-weight-bold">
+                            Select Legal Document (.txt only)
+                        </label>
+                        <input type="file"
+                               name="file"
+                               class="form-control p-3"
+                               required
+                               accept=".txt">
+                    </div>
+
+                    <div class="alert alert-warning mt-3">
+                        <strong>Note:</strong>
+                        Only plain text (.txt) legal documents are supported.
+                    </div>
+
+                   <button type="button"
+        id="analyzeBtn"
+        class="btn btn-primary btn-block py-3 mt-4"
+        onclick="startAnalysis()">
+    <i class="fa fa-brain mr-2"></i>
+    Analyze Document Using AI
+</button>
+                </form>
+<div id="loadingBox" class="text-center mt-4" style="display:none;">
+    <div class="spinner-border text-primary"
+         role="status"
+         style="width:3rem;height:3rem;">
+    </div>
+
+    <p class="mt-3 font-weight-bold text-primary">
+        🤖 Analyzing document using AI...
+    </p>
+
+    <small class="text-muted">
+        Please wait while we process your legal document
+    </small>
+</div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- FOOTER -->
+<div class="container-fluid bg-secondary text-white text-center py-4">
+    <p class="mb-0">
+        © 2026 <strong>AI-Based Legal Document Summarizer & Law Advisor</strong>
+    </p>
+    <small>Machine Learning & NLP Academic Project</small>
+</div>
+
+<!-- JS -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+<script>
+function startAnalysis() {
+
+    // Disable button
+    const btn = document.getElementById("analyzeBtn");
+    btn.disabled = true;
+    btn.innerHTML = '<i class="fa fa-spinner fa-spin mr-2"></i> Processing...';
+
+    // Show loading animation
+    document.getElementById("loadingBox").style.display = "block";
+
+    // ⏳ Delay form submission (2.5 seconds)
+    setTimeout(() => {
+        document.getElementById("analyzeForm").submit();
+    }, 2500);
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Admin Login | AI Legal Document Summarizer</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Roboto:wght@300;500;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="{{url_for('static',filename='lib/owlcarousel/assets/owl.carousel.min.css')}}" rel="stylesheet">
+    <link href="{{url_for('static',filename='lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css')}}" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="{{url_for('static',filename='css/style.css')}}" rel="stylesheet">
+</head>
+
+<body>
+
+<!-- HEADER -->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-3 bg-secondary d-none d-lg-block">
+            <a href="/" class="navbar-brand w-100 h-100 m-0 p-0 d-flex align-items-center justify-content-center">
+                <h1 class="m-0 display-4 text-primary text-uppercase">Law Advisor</h1>
+            </a>
+        </div>
+        <div class="col-lg-9">
+            <nav class="navbar navbar-expand-lg bg-white navbar-light p-0">
+                <a href="/" class="navbar-brand d-block d-lg-none">
+                    <h1 class="m-0 display-4 text-primary text-uppercase">Law Advisor</h1>
+                </a>
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                    <div class="navbar-nav mr-auto py-0">
+                        <a href="/" class="nav-item nav-link">Home</a>
+                        <a href="/admin" class="nav-item nav-link active">Admin</a>
+                        <a href="/client" class="nav-item nav-link">Client</a>
+                        <a href="/#about" class="nav-item nav-link">About</a>
+
+                    </div>
+
+                    <!-- UPDATED BUTTONS -->
+                    <a href="/client" class="btn btn-outline-primary mr-2 d-none d-lg-block">Client Login</a>
+                    <a href="/admin" class="btn btn-primary d-none d-lg-block">Admin Login</a>
+                </div>
+            </nav>
+        </div>
+    </div>
+</div>
+<!-- HEADER END -->
+
+<!-- PAGE HEADER -->
+<div class="container-fluid bg-page-header" style="margin-bottom: 90px;">
+    <div class="container">
+        <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 400px">
+            <h3 class="display-3 text-white text-uppercase">Admin Login</h3>
+            <div class="d-inline-flex text-white">
+                <p class="m-0 text-uppercase"><a class="text-white" href="/">Home</a></p>
+                <i class="fa fa-angle-double-right pt-1 px-3"></i>
+                <p class="m-0 text-uppercase">Admin</p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- PAGE HEADER END -->
+
+<!-- LOGIN FORM -->
+<div class="container-fluid py-5">
+    <div class="container py-5">
+        <div class="text-center pb-2">
+            {% if msg %}
+            <p style="color:red">{{ msg }}</p>
+            {% endif %}
+            <h1 class="mb-4">Administrator Login</h1>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <div class="contact-form">
+                    <form action="/AdminLogAction" method="post">
+                        <div class="form-group">
+                            <input type="text" name="uname" class="form-control p-4"
+                                   placeholder="Admin Username" required />
+                        </div>
+                        <div class="form-group">
+                            <input type="password" name="password" class="form-control p-4"
+                                   placeholder="Admin Password" required />
+                        </div>
+                        <div>
+                            <button class="btn btn-primary btn-block py-3" type="submit">
+                                Login as Admin
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- LOGIN FORM END -->
+
+<!-- FOOTER -->
+<div class="container-fluid bg-secondary text-white text-center py-3">
+    <p class="mb-0">
+        © 2026 AI-Based Legal Document Summarizer & Law Advisor
+    </p>
+</div>
+
+<!-- JS -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+<script src="{{url_for('static',filename='js/main.js')}}"></script>
+
+</body>
+</html>
